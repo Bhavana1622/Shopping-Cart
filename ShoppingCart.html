@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="App">
+<head>
+	<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Bhavana Sahil Shenai">
+
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+
+  <style type="text/css">
+.margin{
+	padding-bottom: 20px;
+	padding-top: 30px;
+}
+
+ .tab-content {
+  border-bottom: 1px solid #dddddd;
+  border-left: 1px solid #dddddd;
+  border-right: 1px solid #dddddd;
+  padding: 10px;
+  background-color: LightSeaGreen;
+}
+
+  </style>
+</head>
+<body>
+<div class="container">
+	<div class="row row-content" ng-controller="AppCtrl">
+
+
+
+
+
+				<div ng-show="showAlert" class="alert alert-success">
+					Item(s) Successfully added to Cart
+				</div>
+
+
+					<ul class="nav nav-tabs nav-justified">
+						<li class="active"><a href="#buy"   data-toggle="tab">Buy</a></li>
+						<li><a href="#sell"    data-toggle="tab">Sell</a></li>
+						<li><a href="#cart"  data-toggle="tab">Cart <span class="glyphicon glyphicon-shopping-cart"></span>
+						<span class="badge" ng-model="items">{{items}}</span>
+						</a></li>
+					</ul>
+					<div class="tab-content">
+						<div id="buy" class="tab-pane fade in active" >
+							<p>Please Choose Your Items: </p>
+
+						<div class="media" ng-repeat="prod in buy">
+								<div class="media-left media-middle">
+							<img src="{{prod.image}}" width="100" height="100" class="img-thumbnail img-responsive media-object">
+								</div>
+							<div class="media-body">
+								<h2 class="media-heading">{{prod.name}}<span class="label label-warning label-sm">${{prod.price}}</span></h2>
+								<p>{{prod.description}}</p>
+								<button class="btn btn-success" ng-click="addToCart(prod)">Add to Cart</button>
+								<!-- <div class="alert alert-success" >
+									yes
+								</div> -->
+							</div>
+							<hr>
+						</div>
+
+						</div>
+						<div id="sell" class="tab-pane fade">
+							
+							<ul class="nav nav-tabs">
+								<li class="active"><a href="#fruit" data-toggle="tab">Fruit</a></li>
+								<li><a href="#veggie" data-toggle="tab">Vegetables</a></li>
+							</ul>
+							<div class="tab-content">
+								<div id="fruit" class="tab-pane fade in active">
+								
+								<form >
+								<div class="form-group">
+								  	 <input type="text" ng-model="sellt.fruitname" name="fruitname" placeholder="Name of fruit..." class="form-control">
+									 <input type="text" ng-model="sellt.desp" name="desp" placeholder="Description..." class="form-control">
+									 <input type="number"  ng-model="sellt.price" name="price" min="10" placeholder="Price..." class="form-control">
+								<input type="text" name="category" ng-value="fruit" ng-model="category" placeholder="Fruit" class="form-control" disabled>
+								<img id="blah"  alt="your image" width="100" height="100" class="margin" />
+									<input type="file"  ng-model="sellt.image" name="filename" accept="image/gif, image/jpeg, image/png" onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])">
+									<div class="margin">
+									<button class="btn btn-success btn-lg " ng-click="sellfruit(sellt)">Sell</button>
+									<div class="alert alert-success" ng-show="SellAlert">
+										Item ready to be sold. 
+									</div>
+									</div>
+								</div>
+								</form>
+								</div>
+
+								<div id="veggie" class="tab-pane fade">
+								<form>
+								<div class="form-group ">
+								  	 <input type="text" name="vegname"  ng-model="sellV.vegName"  placeholder="Name of Vegetable..." class="form-control">
+									 <input type="text" name="desp" ng-model="sellV.desp" placeholder="Description..." class="form-control">
+									 <input type="number" ng-model="sellV.price" name="number" min="10" placeholder="Price..." class="form-control">
+								<input type="text" name="category" ng-value="vegetable" ng-model="sellV.category" placeholder="Vegetable" class="form-control" disabled>
+								<img id="blahh" alt="your image" width="100" height="100"  class="margin" />
+									<input type="file" ng-model="sellV.vegFile" name="filename" accept="image/gif, image/jpeg, image/png" onchange="document.getElementById('blahh').src = window.URL.createObjectURL(this.files[0])">
+
+									<div class="margin">
+									<button class="btn btn-success btn-lg " ng-click="sellVeg(sellV)">Sell</button>
+									</div>
+								</div>
+								</form>
+								</div>
+
+							</div>
+
+						</div>
+
+						<div id="cart" class="tab-pane fade">
+
+							<h3 class="text-center">Checking Out </h3>
+							<!-- <p>{{var.name}}</p> -->
+							<div ng-show="CheckCart==false">
+								<h4 class="text-center">Cart is Empty<span class="glyphicon glyphicon-shopping-cart"></span>...</h4>
+							</div>
+
+
+							<div ng-show="CheckCart==true">
+							<div class="media" ng-repeat="products in cart" >
+								<div class="media-left media-middle">
+							<img src="{{products.image}}" width="100" height="100" class="img-thumbnail img-responsive media-object">
+								</div>
+							<div class="media-body">
+								<h2 class="media-heading">{{products.name}}<span class="label label-warning label-sm">${{products.price}} </span></h2>
+								
+								<select ng-model="selectQuantity" ng-options=" x for x in quantity">
+								</select>
+						
+							
+							<button type="button" class="btn btn-danger btn-sm" ng-click="deleteCart(products)">Delete Item</button>
+							
+							</div>
+							<hr>
+							
+							</div>
+							</div>
+
+							<div ng-show="Checkout">
+								<button class="btn btn-success btn-lg" type="button" data-toggle="modal" data-target="#modalCheckoutCart">Proceed to CheckOut</button>
+							</div>
+
+							<div id="modalCheckoutCart" class="modal fade">
+							<div class="modal-dialog modal-lg">
+							<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal">&times;</button>
+								<h3 class="modal-title">Proceed to CheckOut</h3>
+							</div>
+								<div class="modal-body">
+									<div class="media" ng-repeat="products in cart" >
+									<div class="media-left media-middle">
+								<img src="{{products.image}}" width="100" height="100" class="img-thumbnail img-responsive media-object">
+									</div>
+									<div class="media-body">
+										<h2 class="media-heading">{{products.name}}<span class="label label-warning label-sm">{{products.price}}</span></h2>
+								
+						
+									</div>
+											<hr>
+									</div>
+								</div>
+								<div class="modal-footer">
+										 <p>{{totalPrice}}</p> 
+									<button type="button" class="close" data-dismiss="modal" >Close</button>
+								</div>
+							</div>
+							</div>	
+							</div>
+
+
+					
+						</div>
+
+					</div>
+
+
+
+
+	</div>
+</div>
+<script type="text/javascript" src="AppCtrl.js"></script>
+</body>
+</html>
