@@ -12,19 +12,23 @@ Cart is empty if nothing has been added to the cart by the user.
 Languages used:-
 Twitter Bootstrap, AngularJs , Javascript , HTML5, CSS3.
 
+Choose the items to add them to your cart:-
 
 ![screencapture-file-c-frontend-shopping-shoppingcart-html-1499608303049](https://user-images.githubusercontent.com/25843455/28072299-38cfe35e-6670-11e7-9a39-19d49f5d6a9f.png)
 
+Initially the Cart is empty:-
 
 ![screencapture-file-c-frontend-shopping-shoppingcart-html-1499608320169](https://user-images.githubusercontent.com/25843455/28072300-38d0ba5e-6670-11e7-9204-243cd62101d3.png)
 
+Sell Fruits or Vegetables:-
 
 ![screencapture-file-c-frontend-shopping-shoppingcart-html-1499608329840](https://user-images.githubusercontent.com/25843455/28072301-38d8af8e-6670-11e7-90ba-987e920d809b.png)
 
+Once the item is added to the cart, an alert will be displayed and the number of items in the cart has been updated to 1:-
 
 ![screencapture-file-c-frontend-shopping-shoppingcart-html-1499608345618](https://user-images.githubusercontent.com/25843455/28072302-38e0497e-6670-11e7-8496-87db7eaf89a5.png)
 
-
+Item added to cart:-
 ![screencapture-file-c-frontend-shopping-shoppingcart-html-1499608361870](https://user-images.githubusercontent.com/25843455/28072303-38eaa2a2-6670-11e7-9f7f-f42bdb97f5b5.png)
 
 
