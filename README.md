@@ -34,6 +34,8 @@ Item added to cart:-
 
 ![screencapture-file-c-frontend-shopping-shoppingcart-html-1499608376527](https://user-images.githubusercontent.com/25843455/28072304-38eb5cc4-6670-11e7-9d49-0646b6f16dd0.png)
 
+Deleting an item from the cart:-
+
 ![screencapture-file-c-frontend-shopping-shoppingcart-html-1499608408422](https://user-images.githubusercontent.com/25843455/28072311-3929aa24-6670-11e7-9b67-9cb5775bcdfa.png)
 
 ![screencapture-file-c-frontend-shopping-shoppingcart-html-1499608452909](https://user-images.githubusercontent.com/25843455/28072305-390c3746-6670-11e7-867a-037ddf2261fa.png)
